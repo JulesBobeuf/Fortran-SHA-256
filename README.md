@@ -12,16 +12,22 @@ Please do not use this in your professional projects. There will eventually be a
 - Retrieve the password you want to encode from the command line directly (or any better way)
 - Improve the code
 
-## Tools used
+## My configuration
 
 - Windows 11
 - gfortran and mingw32-make
 
-# How to launch the app
+## How to launch the app
 
-make
+make (or mingw32-make)
 ./SHA-256.exe
 
 ### Notes
 
 This is my very first time programming in Fortran. The code will be improved in the future, whenever I will feel more comfortable with the language.
+
+
+### Resources
+
+- [Wikipedia]("https://en.wikipedia.org/wiki/SHA-2")
+- [Youtube : RedBlockBlue]("https://youtu.be/orIgy2MjqrA?si=PqFuDR1SEsldb1oc")
