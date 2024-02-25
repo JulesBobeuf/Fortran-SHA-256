@@ -19,8 +19,8 @@ Please do not use this in your professional projects. There will eventually be a
 
 ## How to launch the app
 
-make (or mingw32-make)
-./SHA-256.exe
+- make (or mingw32-make)
+- ./SHA-256.exe
 
 ### Notes
 
