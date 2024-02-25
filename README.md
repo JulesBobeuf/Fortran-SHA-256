@@ -4,7 +4,7 @@ This is a simple SHA-256 implementation in Fortran.
 
 ## IMPORTANT 
 
-Please do not use this in your professional projects. There will eventually be a release whenever the alogirhtm will be verified.
+Please do not use this in your professional projects. There will eventually be a release whenever the algorithm will be verified.
 
 ## TO DO
 
@@ -21,7 +21,6 @@ Please do not use this in your professional projects. There will eventually be a
 
 make
 ./SHA-256.exe
-
 
 ### Notes
 
