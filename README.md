@@ -29,5 +29,5 @@ This is my very first time programming in Fortran. The code will be improved in 
 
 ### Resources
 
-- [Wikipedia]("https://en.wikipedia.org/wiki/SHA-2")
-- [Youtube : RedBlockBlue]("https://youtu.be/orIgy2MjqrA?si=PqFuDR1SEsldb1oc")
+- [Wikipedia](https://en.wikipedia.org/wiki/SHA-2)
+- [Youtube : RedBlockBlue](https://youtu.be/orIgy2MjqrA?si=PqFuDR1SEsldb1oc)
