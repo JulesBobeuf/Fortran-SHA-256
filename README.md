@@ -17,10 +17,14 @@ Please do not use this in your professional projects. There will eventually be a
 - Windows 11
 - gfortran and mingw32-make
 
-## How to launch the app
+## Launch the app
 
-- make (or mingw32-make)
-- ./SHA-256.exe
+    make (or mingw32-make)
+    ./SHA-256.exe
+
+## Generate Documentations
+
+    doxygen Doxyfile
 
 ### Notes
 
