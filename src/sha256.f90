@@ -1,8 +1,44 @@
+!> \mainpage
+!! # SHA-256 Algorithm Documentation
+!!
+!! This documentation provides an overview of my SHA-256 algorithm implementation in Fortran.
+!! 
+!! ## Overview
+!! The SHA-256 algorithm is a widely used cryptographic hash function that produces a 256-bit hash value.
+!! This implementation includes the core SHA-256 algorithm and necessary utility functions.
+!!
+!! ## Usage
+!! - The main program `SHA256` demonstrates the application of the SHA-256 algorithm to hash a password.
+!! - The `compression_utils` module contains utility functions used in the SHA-256 algorithm.
+!! - The `sigmas` module includes functions representing various operations used in SHA-256.
+!!
+!! ## Compilation
+!! To compile the program, use the provided Makefile. The `make` command will create the executable `SHA-256`.
+!!
+!! ## Example
+!! - Run the compiled executable with the command: `./SHA-256`
+!! - Input a password when prompted, and the program will output the SHA-256 hash.
+!!
+!! ## Author
+!! - Jules BOBEUF
+!!
+!! ## License
+!! This code is distributed under the MIT License.
+!!
+!! ## Disclaimer
+!! This code is provided as-is and without any warranty. Use it at your own risk.
+!!
+!! ## References
+!! - [SHA-256 Wikipedia](https://en.wikipedia.org/wiki/SHA-2)
+
+!> \file sha256.f90
+!> \brief This program implements the SHA-256 algorithm.
 program sha256
     use sigmas
     use compression_utils
     implicit none
 
+    ! Constants for the initial hash values (H) and the constants (K) used in the SHA-256 algorithm
     integer, parameter :: H(8) = [ &
     int(Z'6a09e667'), int(Z'bb67ae85'), &
     int(Z'3c6ef372'), int(Z'a54ff53a'), &
@@ -44,13 +80,14 @@ program sha256
     int(Z'90befffa'), int(Z'a4506ceb'), &
     int(Z'bef9a3f7'), int(Z'c67178f2') ]
 
-
+    ! Variables
     character(len=32), dimension(64) :: W
     
     character(len=16) :: password = "ThisIsAPasswd102"
     character(len=512) :: padding = ""
     character(len=64) :: password_length_64_bits, encoded_password
     character(len=32) :: a, b, c, d, e, f, g, hh, y, z
+
     integer :: char_value, incr
     integer :: password_length = len(password)
     integer :: nb_bit_in_password = LEN(password) * 8 
@@ -61,7 +98,7 @@ program sha256
         padding = padding(1:len( trim(padding) ))//decimal_to_binary(char_value)
     end do
 
-    ! add 1
+    ! add 1 (SHA-256 Algorithm requires it)
     padding = padding(1:len( trim(padding) ))//'1'
 
     padding(nb_bit_in_password+2:) = REPEAT('0', (len(padding) - (nb_bit_in_password+1)) - 64)
@@ -111,6 +148,14 @@ program sha256
 
     contains
 
+    !> \brief Convert a decimal value to its binary representation.
+    !!
+    !! This function takes a decimal value and converts it into a binary representation.
+    !!
+    !! \param[in] decimal The decimal value to be converted (integer).
+    !!
+    !! \return The binary representation as a character(len=8) sequence.
+    !!
     function decimal_to_binary(decimal) result(binary_representation)
         integer, intent(in) :: decimal
         integer :: temp, remainder, i
@@ -131,6 +176,14 @@ program sha256
     
     end function decimal_to_binary
     
+    !> \brief Create the message schedule for SHA-256 algorithm.
+    !!
+    !! This function creates the message schedule 'W' used in the SHA-256 algorithm from the given padding.
+    !!
+    !! \param[in] padding The padded message as a character(len=512) sequence.
+    !!
+    !! \return The message schedule 'W' as a character(len=32) array.
+    !!
     function create_message_schedule(padding) result(W)
         character(len=512), intent(in) :: padding
         character(len=32), dimension(64) :: W
@@ -180,6 +233,15 @@ program sha256
 
     end function create_message_schedule
 
+    !> \brief Perform the final concatenation for SHA-256 algorithm.
+    !!
+    !! This function performs the final concatenation of hash values according to the SHA-256 algorithm.
+    !!
+    !! \param[in] H Hash values as a 8-element integer array.
+    !! \param[in] a, b, c, d, e, f, g, hh Intermediate hash values as character(len=32) sequences.
+    !!
+    !! \return The final concatenated hash value (hexadecimal) as a character(len=64) sequence.
+    !!
     function final_concatenation(H, a, b, c, d, e, f, g, hh) result(res)
         integer, dimension(8), intent(in) :: H
         character(len=32), intent(in) :: a, b, c, d, e, f, g, hh
