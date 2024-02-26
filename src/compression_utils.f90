@@ -96,4 +96,28 @@ module compression_utils
         end do
 
     end function sum2words
+
+    function sum3words(w1, w2, w3) result(res)
+        implicit none
+
+        character(len=32), intent(in) :: w1, w2, w3
+        character(len=32) :: res
+        character(len=1) :: tmp_char
+
+        integer :: tmp_integer_value = 0
+        integer :: bit1, bit2, bit3, incr
+
+        res = ""
+        do incr=1, 32
+            read(w1(incr:incr), '(B32)') bit1
+            read(w2(incr:incr), '(B32)') bit2
+            read(w3(incr:incr), '(B32)') bit3
+
+            tmp_integer_value = ieor(ieor(bit3, bit2), bit1)
+            write(tmp_char, '(B1)') tmp_integer_value
+            res = res(1: len(trim(res)))//tmp_char
+
+        end do
+
+    end function sum3words
 end module compression_utils

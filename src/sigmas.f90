@@ -1,6 +1,6 @@
 module sigmas
+    use compression_utils
     implicit none
-    integer :: sigma_incr
 
     contains
 
@@ -9,9 +9,7 @@ module sigmas
 
         character(len=32), intent(in) :: word
         character(len=32) :: step1, step2, step3, res
-        character(len=1) :: tmp_char
         integer :: tmp_integer_value = 0
-        integer :: bit1, bit2, bit3
 
         ! step 1
 
@@ -36,24 +34,7 @@ module sigmas
 
         write(step3, '(B32.32)') tmp_integer_value
 
-        ! print *, word
-        ! print *, step1
-        ! print *, step2
-        ! print *, step3
-
-        res = ""
-        do sigma_incr=1, 32
-            read(step1(sigma_incr:sigma_incr), '(B32)') bit1
-            read(step2(sigma_incr:sigma_incr), '(B32)') bit2
-            read(step3(sigma_incr:sigma_incr), '(B32)') bit3
-
-            tmp_integer_value = ieor(ieor(bit3, bit2), bit1)
-            write(tmp_char, '(B1)') tmp_integer_value
-            res = res(1: len(trim(res)))//tmp_char
-
-        end do
-        ! print *, ieor(ieor(ishftc(tmp_integer_value, -7), ishftc(tmp_integer_value, -8)), ishft(tmp_integer_value, -3))
-
+        res = sum3words(step1, step2, step3)
 
     end function sigma_0
 
@@ -63,9 +44,7 @@ module sigmas
 
         character(len=32), intent(in) :: word
         character(len=32) :: step1, step2, step3, res
-        character(len=1) :: tmp_char
         integer :: tmp_integer_value = 0
-        integer :: bit1, bit2, bit3
 
         ! step 1
 
@@ -90,22 +69,7 @@ module sigmas
 
         write(step3, '(B32.32)') tmp_integer_value
 
-        ! print *, word
-        ! print *, step1
-        ! print *, step2
-        ! print *, step3
-
-        res = ""
-        do sigma_incr=1, 32
-            read(step1(sigma_incr:sigma_incr), '(B32)') bit1
-            read(step2(sigma_incr:sigma_incr), '(B32)') bit2
-            read(step3(sigma_incr:sigma_incr), '(B32)') bit3
-
-            tmp_integer_value = ieor(ieor(bit3, bit2), bit1)
-            write(tmp_char, '(B1)') tmp_integer_value
-            res = res(1: len(trim(res)))//tmp_char
-
-        end do
+        res = sum3words(step1, step2, step3)
 
     end function sigma_1
 
@@ -116,9 +80,7 @@ module sigmas
 
         character(len=32), intent(in) :: word
         character(len=32) :: step1, step2, step3, res
-        character(len=1) :: tmp_char
         integer :: tmp_integer_value = 0
-        integer :: bit1, bit2, bit3
 
         ! step 1
 
@@ -143,18 +105,8 @@ module sigmas
 
         write(step3, '(B32.32)') tmp_integer_value
 
-        res = ""
-        do sigma_incr=1, 32
-            read(step1(sigma_incr:sigma_incr), '(B32)') bit1
-            read(step2(sigma_incr:sigma_incr), '(B32)') bit2
-            read(step3(sigma_incr:sigma_incr), '(B32)') bit3
+        res = sum3words(step1, step2, step3)
 
-            tmp_integer_value = ieor(ieor(bit3, bit2), bit1)
-            write(tmp_char, '(B1)') tmp_integer_value
-            res = res(1: len(trim(res)))//tmp_char
-
-        end do
-        ! print *, "cap sigma 0 : ", res
 
     end function cap_sigma_0
 
@@ -163,9 +115,7 @@ module sigmas
 
         character(len=32), intent(in) :: word
         character(len=32) :: step1, step2, step3, res
-        character(len=1) :: tmp_char
         integer :: tmp_integer_value = 0
-        integer :: bit1, bit2, bit3
 
         ! step 1
 
@@ -190,19 +140,8 @@ module sigmas
 
         write(step3, '(B32.32)') tmp_integer_value
 
-        res = ""
-        do sigma_incr=1, 32
-            read(step1(sigma_incr:sigma_incr), '(B32)') bit1
-            read(step2(sigma_incr:sigma_incr), '(B32)') bit2
-            read(step3(sigma_incr:sigma_incr), '(B32)') bit3
+        res = sum3words(step1, step2, step3)
 
-            tmp_integer_value = ieor(ieor(bit3, bit2), bit1)
-            write(tmp_char, '(B1)') tmp_integer_value
-            res = res(1: len(trim(res)))//tmp_char
-
-        end do
-
-        ! print *, "cap sigma 1 : ", res
     end function cap_sigma_1
 
 end module sigmas
