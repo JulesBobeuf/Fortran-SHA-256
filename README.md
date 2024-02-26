@@ -22,7 +22,7 @@ Please do not use this in your professional projects. There will eventually be a
     make (or mingw32-make)
     ./SHA-256.exe
 
-## Generate Documentations
+## Generate Documentation
 
     doxygen Doxyfile
 
