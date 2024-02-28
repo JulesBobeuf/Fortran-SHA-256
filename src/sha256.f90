@@ -16,8 +16,9 @@
 !! To compile the program, use the provided Makefile. The `make` command will create the executable `SHA-256`.
 !!
 !! ## Example
-!! - Run the compiled executable with the command: `./SHA-256`
-!! - Input a password when prompted, and the program will output the SHA-256 hash.
+!! Run the compiled executable and input a password as first argument.
+!! - - `./SHA-256 ThisIsAPasswd102`
+!! - `./SHA-256 "A cool sentence"`
 !!
 !! ## Author
 !! - Jules BOBEUF
@@ -81,16 +82,33 @@ program sha256
     int(Z'bef9a3f7'), int(Z'c67178f2') ]
 
     ! Variables
+    ! Storing the message scheduler
     character(len=32), dimension(64) :: W
-    
-    character(len=16) :: password = "ThisIsAPasswd102"
+    ! Used to take the first program parameter
+    character(len=1024) :: arg1
+    ! The password to encode
+    character(len=:), allocatable :: password
+
     character(len=512) :: padding = ""
     character(len=64) :: password_length_64_bits, encoded_password
     character(len=32) :: a, b, c, d, e, f, g, hh, y, z
 
-    integer :: char_value, incr
-    integer :: password_length = len(password)
-    integer :: nb_bit_in_password = LEN(password) * 8 
+    integer :: char_value, incr, nb_bit_in_password, password_length
+
+    if (command_argument_count() == 1) then
+        ! Get the password from the command-line argument
+        call get_command_argument(1, arg1)
+    else
+        print *, "Error : you must specify one argument"
+        STOP -1
+    end if
+
+    ! Store the actual user input in the password variable
+    password = arg1(1:len_trim(arg1))
+
+    nb_bit_in_password = len(password) * 8 
+    password_length = len_trim(password)
+
 
     ! Create the padding 
     do incr=1, password_length
@@ -101,6 +119,7 @@ program sha256
     ! add 1 (SHA-256 Algorithm requires it)
     padding = padding(1:len( trim(padding) ))//'1'
 
+    ! add zeros till you reach 512-64
     padding(nb_bit_in_password+2:) = REPEAT('0', (len(padding) - (nb_bit_in_password+1)) - 64)
 
     write(password_length_64_bits, '(B64.64)') nb_bit_in_password

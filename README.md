@@ -8,7 +8,6 @@ Please do not use this in your professional projects. There will eventually be a
 
 ## TO DO
 
-- Support 448+ bit passwords
 - Retrieve the password you want to encode from the command line directly (or any better way)
 - Improve the code
 
@@ -20,7 +19,8 @@ Please do not use this in your professional projects. There will eventually be a
 ## Launch the app
 
     make (or mingw32-make)
-    ./SHA-256.exe
+    ./SHA-256.exe ThisIsAPasswd102
+    ./SHA-256.exe "A cool sentence"
 
 ## Generate Documentation
 
@@ -29,7 +29,6 @@ Please do not use this in your professional projects. There will eventually be a
 ### Notes
 
 This is my very first time programming in Fortran. The code will be improved in the future, whenever I will feel more comfortable with the language.
-
 
 ### Resources
 
