@@ -8,8 +8,7 @@ Please do not use this in your professional projects. There will eventually be a
 
 ## TO DO
 
-- Retrieve the password you want to encode from the command line directly (or any better way)
-- Improve the code
+- Handle longer messages (440+ bits)
 
 ## My configuration
 
