@@ -9,6 +9,7 @@ Please do not use this in your professional projects. There will eventually be a
 ## TO DO
 
 - Handle longer messages (440+ bits)
+- Improve the code
 
 ## My configuration
 
