@@ -1,6 +1,6 @@
 # Fortran SHA-256
 
-**Fortran SHA-256** is a simple SHA-256 implementation written in Fortran. It is intended for **educational purposes** and demonstrates how the algorithm works using Fortran code.
+**Fortran SHA-256** is a simple SHA-256 implementation written in Fortran. It is intended for **educational purposes** and helped me to learn how the algorithm works using Fortran code.
 
 ## About The Project
 
@@ -64,19 +64,10 @@ Generate documentation using Doxygen:
 doxygen Doxyfile
 ```
 
-## TO DO
-
-- Handle longer messages (440+ bits)  
-- Improve the code
-
 ## My Configuration
 
 - Windows 11  
 - gfortran and mingw32-make
-
-## IMPORTANT
-
-Please do not use this in your professional projects. There will eventually be a release whenever the algorithm will be verified.
 
 ## Resources
 
