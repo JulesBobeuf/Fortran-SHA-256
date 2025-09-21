@@ -1,36 +1,94 @@
 # Fortran SHA-256
 
-This is a simple SHA-256 implementation in Fortran.
+**Fortran SHA-256** is a simple SHA-256 implementation written in Fortran. It is intended for **educational purposes** and demonstrates how the algorithm works using Fortran code.
 
-## IMPORTANT 
+## About The Project
 
-Please do not use this in your professional projects. There will eventually be a release whenever the algorithm will be verified.
+This project was created to explore and implement the SHA-256 hashing algorithm in Fortran. It supports messages up to 440 bits and is not optimized for production use. Future improvements could include handling longer messages and optimizing performance.
+
+## Built With
+
+[![Fortran](https://img.shields.io/badge/Fortran-0071C5?style=for-the-badge&logo=fortran&logoColor=white)](https://fortran-lang.org/)  
+[![Make](https://img.shields.io/badge/Make-000000?style=for-the-badge&logo=gnu-make&logoColor=white)](https://www.gnu.org/software/make/)
+
+## Getting Started
+
+### Folder Structure
+
+```markdown
+Fortran-SHA-256/
+├── 📁 src/          # All Fortran source code files
+├── 📄 Makefile      # Build instructions
+├── 📄 Doxyfile      # Doxygen configuration for docs
+└── 📄 README.md     # Project documentation
+```
+
+### Prerequisites
+
+Ensure you have the following installed:
+
+```sh
+gfortran
+make (or mingw32-make on Windows)
+```
+
+### Installation & Build
+
+1. Clone the repository:
+
+```sh
+git clone https://github.com/JulesBobeuf/Fortran-SHA-256.git
+cd Fortran-SHA-256
+```
+
+2. Build the executable:
+
+```sh
+make          # or mingw32-make on Windows
+```
+
+### Tests / Usage
+
+Run the executable to hash messages:
+
+```sh
+./SHA-256.exe ThisIsAPasswd102
+./SHA-256.exe "A cool sentence"
+```
+
+### Documentation
+
+Generate documentation using Doxygen:
+
+```sh
+doxygen Doxyfile
+```
 
 ## TO DO
 
-- Handle longer messages (440+ bits)
+- Handle longer messages (440+ bits)  
 - Improve the code
 
-## My configuration
+## My Configuration
 
-- Windows 11
+- Windows 11  
 - gfortran and mingw32-make
 
-## Launch the app
+## IMPORTANT
 
-    make (or mingw32-make)
-    ./SHA-256.exe ThisIsAPasswd102
-    ./SHA-256.exe "A cool sentence"
+Please do not use this in your professional projects. There will eventually be a release whenever the algorithm will be verified.
 
-## Generate Documentation
+## Resources
 
-    doxygen Doxyfile
+- [Wikipedia](https://en.wikipedia.org/wiki/SHA-2)  
+- [RedBlockBlue](https://www.youtube.com/watch?v=orIgy2MjqrA&themeRefresh=1)
 
-### Notes
+## License
 
-This is my very first time programming in Fortran. The code will be improved in the future, whenever I will feel more comfortable with the language.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-### Resources
+## Contact
 
-- [Wikipedia](https://en.wikipedia.org/wiki/SHA-2)
-- [Youtube : RedBlockBlue](https://youtu.be/orIgy2MjqrA?si=PqFuDR1SEsldb1oc)
+Jules Bobeuf  
+[LinkedIn](https://www.linkedin.com/in/bobeuf-jules/)  
+bobeuf.jules@gmail.com
