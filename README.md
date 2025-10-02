@@ -20,7 +20,7 @@ Fortran-SHA-256/
 ├── 📁 src/          # All Fortran source code files
 ├── 📄 Makefile      # Build instructions
 ├── 📄 Doxyfile      # Doxygen configuration for docs
-└── 📄 README.md     # Project documentation
+└── 📄 README.md     # Project documentation 
 ```
 
 ### Prerequisites
